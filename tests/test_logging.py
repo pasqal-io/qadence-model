@@ -8,10 +8,10 @@
 # from torch.utils.data import DataLoader
 
 # from perceptrain import TrainConfig, Trainer
-# from qadence_model.models import QNN
+# from qadence_model.constructors.qnn_models import QNN
 # from qadence.model import QuantumModel
 # from qadence.types import ExperimentTrackingTool
-# from qadence_model.utils import rand_featureparameters
+# from qadence_model.constructors.qnn_utils import rand_featureparameters
 
 # from perceptrain.data import to_dataloader
 
@@ -37,71 +37,71 @@
 #     return loss_fn, optimizer
 
 
-# # def test_model_logging_mlflow_basicQM(BasicQuantumModel: QuantumModel, tmp_path: Path) -> None:
-# #     model = BasicQuantumModel
-# #     loss_fn, optimizer = setup_model(model)
+# def test_model_logging_mlflow_basicQM(BasicQuantumModel: QuantumModel, tmp_path: Path) -> None:
+#     model = BasicQuantumModel
+#     loss_fn, optimizer = setup_model(model)
 
-# #     config = TrainConfig(
-# #         root_folder=tmp_path,
-# #         max_iter=10,  # type: ignore
-# #         checkpoint_every=1,
-# #         write_every=1,
-# #         log_model=True,
-# #         tracking_tool=ExperimentTrackingTool.MLFLOW,
-# #     )
+#     config = TrainConfig(
+#         root_folder=tmp_path,
+#         max_iter=10,  # type: ignore
+#         checkpoint_every=1,
+#         write_every=1,
+#         log_model=True,
+#         tracking_tool=ExperimentTrackingTool.MLFLOW,
+#     )
 
-# #     trainer = Trainer(model, optimizer, config, loss_fn, None)
-# #     with trainer.enable_grad_opt():
-# #         trainer.fit()
+#     trainer = Trainer(model, optimizer, config, loss_fn, None)
+#     with trainer.enable_grad_opt():
+#         trainer.fit()
 
-# #     load_mlflow_model(trainer.callback_manager.writer)
+#     load_mlflow_model(trainer.callback_manager.writer)
 
-# #     clean_mlflow_experiment(trainer.callback_manager.writer)
-
-
-# # def test_model_logging_mlflow_basicQNN(BasicQNN: QNN, tmp_path: Path) -> None:
-# #     data = dataloader()
-# #     model = BasicQNN
-
-# #     loss_fn, optimizer = setup_model(model)
-
-# #     config = TrainConfig(
-# #         root_folder=tmp_path,
-# #         max_iter=10,  # type: ignore
-# #         checkpoint_every=1,
-# #         write_every=1,
-# #         log_model=True,
-# #         tracking_tool=ExperimentTrackingTool.MLFLOW,
-# #     )
-
-# #     trainer = Trainer(model, optimizer, config, loss_fn, data)
-# #     with trainer.enable_grad_opt():
-# #         trainer.fit()
-
-# #     load_mlflow_model(trainer.callback_manager.writer)
-
-# #     clean_mlflow_experiment(trainer.callback_manager.writer)
+#     clean_mlflow_experiment(trainer.callback_manager.writer)
 
 
-# # def test_model_logging_mlflow_basicAdjQNN(BasicAdjointQNN: QNN, tmp_path: Path) -> None:
-# #     data = dataloader()
-# #     model = BasicAdjointQNN
+# def test_model_logging_mlflow_basicQNN(BasicQNN: QNN, tmp_path: Path) -> None:
+#     data = dataloader()
+#     model = BasicQNN
 
-# #     loss_fn, optimizer = setup_model(model)
+#     loss_fn, optimizer = setup_model(model)
 
-# #     config = TrainConfig(
-# #         root_folder=tmp_path,
-# #         max_iter=10,  # type: ignore
-# #         checkpoint_every=1,
-# #         write_every=1,
-# #         log_model=True,
-# #         tracking_tool=ExperimentTrackingTool.MLFLOW,
-# #     )
+#     config = TrainConfig(
+#         root_folder=tmp_path,
+#         max_iter=10,  # type: ignore
+#         checkpoint_every=1,
+#         write_every=1,
+#         log_model=True,
+#         tracking_tool=ExperimentTrackingTool.MLFLOW,
+#     )
 
-# #     trainer = Trainer(model, optimizer, config, loss_fn, data)
-# #     with trainer.enable_grad_opt():
-# #         trainer.fit()
+#     trainer = Trainer(model, optimizer, config, loss_fn, data)
+#     with trainer.enable_grad_opt():
+#         trainer.fit()
 
-# #     load_mlflow_model(trainer.callback_manager.writer)
+#     load_mlflow_model(trainer.callback_manager.writer)
 
-# #     clean_mlflow_experiment(trainer.callback_manager.writer)
+#     clean_mlflow_experiment(trainer.callback_manager.writer)
+
+
+# def test_model_logging_mlflow_basicAdjQNN(BasicAdjointQNN: QNN, tmp_path: Path) -> None:
+#     data = dataloader()
+#     model = BasicAdjointQNN
+
+#     loss_fn, optimizer = setup_model(model)
+
+#     config = TrainConfig(
+#         root_folder=tmp_path,
+#         max_iter=10,  # type: ignore
+#         checkpoint_every=1,
+#         write_every=1,
+#         log_model=True,
+#         tracking_tool=ExperimentTrackingTool.MLFLOW,
+#     )
+
+#     trainer = Trainer(model, optimizer, config, loss_fn, data)
+#     with trainer.enable_grad_opt():
+#         trainer.fit()
+
+#     load_mlflow_model(trainer.callback_manager.writer)
+
+#     clean_mlflow_experiment(trainer.callback_manager.writer)

@@ -40,8 +40,8 @@ from qadence.types import (
     TArray,
 )
 
-from .config import AnsatzConfig, FeatureMapConfig
-from .models import QNN
+from .qnn_config import AnsatzConfig, FeatureMapConfig
+from .qnn_models import QNN
 
 
 def _create_support_arrays(

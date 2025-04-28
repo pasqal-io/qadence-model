@@ -19,7 +19,7 @@ from qadence.noise import NoiseHandler
 from qadence.register import Register
 from qadence.types import BackendName, DiffMode, Endianness, InputDiffMode, ParamDictType
 from qadence.utils import block_to_mathematical_expression
-from .config import AnsatzConfig, FeatureMapConfig
+from .qnn_config import AnsatzConfig, FeatureMapConfig
 
 logger = getLogger(__name__)
 
@@ -295,7 +295,7 @@ class QNN(QuantumModel):
         print(str(y)) # markdown-exec: hide
         ```
         """
-        from .constructors import build_qnn_from_configs
+        from .qnn_constructors import build_qnn_from_configs
 
         qnn = build_qnn_from_configs(
             register=register,
