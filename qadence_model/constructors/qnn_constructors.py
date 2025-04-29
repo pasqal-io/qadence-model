@@ -41,7 +41,7 @@ from qadence.types import (
 )
 
 from .qnn_config import AnsatzConfig, FeatureMapConfig
-from .qnn_models import QNN
+from .qnn_model import QNN
 
 
 def _create_support_arrays(

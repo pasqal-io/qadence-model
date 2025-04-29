@@ -5,7 +5,7 @@ from collections import OrderedDict
 import numpy as np
 import pytest
 import torch
-from conftest_model import *
+from conftest import *
 
 from qadence import QNN, DiffMode
 from qadence.blocks import (

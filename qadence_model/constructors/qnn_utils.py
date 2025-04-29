@@ -9,7 +9,7 @@ from qadence.blocks import AbstractBlock, parameters
 from qadence.circuit import QuantumCircuit
 from qadence.parameters import Parameter, stringify
 from qadence.model import QuantumModel
-from .qnn_models import QNN
+from .qnn_model import QNN
 
 
 @singledispatch

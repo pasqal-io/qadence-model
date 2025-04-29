@@ -18,16 +18,16 @@ from .rydberg_feature_maps import (
 
 from .qft import qft
 
-from qnn_config import FeatureMapConfig, AnsatzConfig
-from qnn_constructors import (
+from .qnn_config import FeatureMapConfig, AnsatzConfig
+from .qnn_constructors import (
     create_fm_blocks,
     create_ansatz,
     create_observable,
     build_qnn_from_configs,
 )
 
-from qnn_models import QNN
-from qcnn_models import QCNN
+from .qnn_model import QNN
+from .qcnn_model import QCNN
 
 # Modules to be automatically added to the qadence namespace
 __all__ = [

@@ -9,7 +9,7 @@ from qadence.circuit import QuantumCircuit
 from qadence.types import BackendName, DiffMode
 from qadence.blocks.abstract import AbstractBlock
 
-from .qnn_models import QNN
+from .qnn_model import QNN
 from .qnn_constructors import _create_conv_layer, _create_feature_map_qcnn
 
 
