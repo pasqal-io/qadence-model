@@ -6,17 +6,18 @@ import networkx as nx
 import numpy as np
 import qutip
 import sympy
+import torch
 import torch.nn as nn
 from openfermion import QubitOperator
 from pytest import fixture  # type: ignore
 from sympy import Expr
 from torch import Tensor, tensor
 
-from qadence import QNN, QuantumModel
+from qadence import QNN, QuantumModel, BasisSet, FeatureParameter
 from qadence.blocks.abstract import AbstractBlock
 from qadence.blocks.utils import chain, kron, tag, unroll_block_with_scaling
 from qadence.circuit import QuantumCircuit
-from qadence.constructors import feature_map, hea, total_magnetization
+from qadence.constructors import feature_map, hea, total_magnetization, hamiltonian_factory
 from qadence.operations import CNOT, RX, RY, X, Y, Z
 from qadence.parameters import Parameter, TimeParameter
 from qadence.register import Register
@@ -277,3 +278,39 @@ def qutip_generator(omega: float, feature_param_x: float, feature_param_y: float
         )
 
     return generator_t
+
+
+@fixture
+def textbook_qfi_model() -> QNN:
+    n_qubits, n_layers = [2, 2]
+    feature_param = FeatureParameter("phi", value=0)
+    fm = feature_map(n_qubits, range(n_qubits), param=feature_param, fm_type=BasisSet.FOURIER)
+    ansatz = hea(
+        n_qubits,
+        n_layers,
+        param_prefix="theta",
+        operations=[RX],
+        periodic=True,
+    )
+    circuit = QuantumCircuit(n_qubits, ansatz, fm)
+    obs = hamiltonian_factory(n_qubits, detuning=Z)
+    model = QNN(circuit, [obs])
+    model.reset_vparams(torch.zeros(model.num_vparams))
+    return model
+
+
+@fixture
+def basic_optim_model() -> QNN:
+    n_qubits, n_layers = [2, 2]
+    fm = feature_map(n_qubits, range(n_qubits), param="phi", fm_type=BasisSet.FOURIER)
+    ansatz = hea(
+        n_qubits,
+        depth=n_layers,
+        param_prefix="theta",
+        operations=[RX, RY],
+        periodic=True,
+    )
+    circuit = QuantumCircuit(n_qubits, fm, ansatz)
+    obs = hamiltonian_factory(n_qubits, detuning=Z)
+    model = QNN(circuit, [obs])
+    return model
