@@ -5,7 +5,7 @@ import torch
 
 from qadence_model.constructors.qnn_model import QNN
 from perceptrain import DictDataLoader, TrainConfig, Trainer, to_dataloader
-from conftest import *
+from tests.conftest import *
 
 
 @pytest.mark.flaky(max_runs=10)
