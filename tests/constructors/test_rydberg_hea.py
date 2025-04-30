@@ -89,7 +89,6 @@ def test_analog_feature_map(basis: BasisSet) -> None:
     assert fm.parameters.phase == -PI / 2
     assert float(fm.parameters.delta) == 0.0
 
-
     params = list(fm.parameters.alpha.free_symbols)
     assert len(params) == 2
     assert pname in params and mname in params
